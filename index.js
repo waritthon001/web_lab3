@@ -6,6 +6,9 @@ const guessSubmit = document.querySelector('.guessSubmit');
 const guessField = document.querySelector('.guessField');
 const resetButton = document.querySelector('.resetButton');
 let guessCount = 1;
+const time=0;
+// timer(time);
+let isover=true;
 // let resetButton;
 
 function checkGuess() {
@@ -20,6 +23,7 @@ function checkGuess() {
     result.textContent = 'Congratulations! You got it right!';
     result.style.backgroundColor = 'green';
     lowOrHi.textContent = '';
+    isover=false;
     setGameOver();
   } else if (guessCount === 10) {
     result.textContent = '!!!GAME OVER!!!';
@@ -50,6 +54,18 @@ function setGameOver() {
   
 }
 
+// while (isover) {
+//     if (time<60) {
+//       console.log(time);
+//     }else{
+//       result.textContent = '!!!GAME OVER!!!';
+//       lowOrHi.textContent = '';
+//       setGameOver();
+//     }
+//      time++;
+//   }
+  
+
 function resetGame() {
   guessCount = 1;
   const resetParas = document.querySelectorAll('.resultParas p');
@@ -60,6 +76,7 @@ function resetGame() {
   guessSubmit.disabled = false;
   guessField.value = '';
   guessField.focus();
+  time=0;
   
   randomNumber = Math.floor(Math.random() * 100) + 1;
 
